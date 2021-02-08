@@ -129,6 +129,14 @@ public class IncidentImpl implements IIncidentService {
         return listIncident;
     }
 
+    @Override
+    public List<Incident> getIncidentByCategorieAndDate(String categorie, String date) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date1 = LocalDate.parse(date, formatter);
+        List<Incident> listIncident = incidentRepository.findByCategorieAndDateIncident(categorie , date1);
+        return listIncident;
+    }
+
 
 
 }

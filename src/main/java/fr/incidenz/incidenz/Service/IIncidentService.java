@@ -24,5 +24,7 @@ public interface IIncidentService {
     public List<Incident> listIncidentByCategorieDate(String categorie, String date);
 
     public List<Incident> getIncidentByCategorieAndStatus(String categorie , String status);
+
+    public List<Incident> getIncidentByCategorieAndDate(String categorie , String date);
     
 }

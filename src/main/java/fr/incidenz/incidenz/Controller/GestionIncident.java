@@ -101,5 +101,15 @@ public class GestionIncident {
            return response;
        }
 
+
+       @GetMapping("/getIncidentByCategorieAndDate/{categorie}/{date}")
+       public Response getIncidentByCategorieAndDate(@PathVariable("categorie") String categorie ,
+       @PathVariable("date") String date) {
+           Response response = new Response();
+           response.setReturnValue(incidentService.getIncidentByCategorieAndDate(categorie,date));
+   
+           return response;
+       }
+
           
 }
