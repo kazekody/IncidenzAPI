@@ -6,13 +6,15 @@ import fr.incidenz.incidenz.Model.User;
 
 public interface IUserService {
 
-    public void addUser (User user);
+    public User addUser (User user);
 
-    public List<User> getUser();
+    public List<User> listAllUser();
     
-    public void modifyUser();
+    public User modifyUser(User user);
 
-    public User getUserbyId();
+    public User getUserbyId(String idUser);
+
+    public Boolean deleteUser(String idUser);
 
     
     

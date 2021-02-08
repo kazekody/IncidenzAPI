@@ -1,56 +1,60 @@
 package fr.incidenz.incidenz.Model;
 
+import java.io.Serializable;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import fr.incidenz.Enum.Categorie_Institution;
-
 @Entity
 @Table(name="Institution_table")
-public class Institution {
+public class Institution  implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name="id_Insitution", unique = true , nullable = false, updatable = false)
-    private String idInsitution;
+    private String idInstitution;
 
     @Column(name = "Libelle")
     private String Libelle;
 
-    @Column(name = "Email_Insitution")
+    @Column(name = "Email_Insitution", unique = true)
     private String email;
 
     @Column(name = "Password_Institution" ) 
     private String password;
 
-    @Enumerated(EnumType.STRING)
+    
     @Column(name="Categorie_Institution")
-    private Categorie_Institution categorie;
+    private String categorie;
+
+    
 
 
 
     public Institution() {
     }
 
-    public Institution(String idInsitution, String Libelle, String email, String password, Categorie_Institution categorie) {
-        this.idInsitution = idInsitution;
+    public Institution(String idInstitution, String Libelle, String email, String password, String categorie) {
+        this.idInstitution = idInstitution;
         this.Libelle = Libelle;
         this.email = email;
         this.password = password;
         this.categorie = categorie;
     }
 
-    public String getIdInsitution() {
-        return this.idInsitution;
+    public String getidInstitution() {
+        return this.idInstitution;
     }
 
-    public void setIdInsitution(String idInsitution) {
-        this.idInsitution = idInsitution;
+    public void setidInstitution(String idInstitution) {
+        this.idInstitution = idInstitution;
     }
 
     public String getLibelle() {
@@ -77,16 +81,16 @@ public class Institution {
         this.password = password;
     }
 
-    public Categorie_Institution getCategorie() {
+    public String getCategorie() {
         return this.categorie;
     }
 
-    public void setCategorie(Categorie_Institution categorie) {
+    public void setCategorie(String categorie) {
         this.categorie = categorie;
     }
 
-    public Institution idInsitution(String idInsitution) {
-        this.idInsitution = idInsitution;
+    public Institution idInstitution(String idInstitution) {
+        this.idInstitution = idInstitution;
         return this;
     }
 
@@ -105,7 +109,7 @@ public class Institution {
         return this;
     }
 
-    public Institution categorie(Categorie_Institution categorie) {
+    public Institution categorie(String categorie) {
         this.categorie = categorie;
         return this;
     }
@@ -118,18 +122,18 @@ public class Institution {
             return false;
         }
         Institution institution = (Institution) o;
-        return Objects.equals(idInsitution, institution.idInsitution) && Objects.equals(Libelle, institution.Libelle) && Objects.equals(email, institution.email) && Objects.equals(password, institution.password) && Objects.equals(categorie, institution.categorie);
+        return Objects.equals(idInstitution, institution.idInstitution) && Objects.equals(Libelle, institution.Libelle) && Objects.equals(email, institution.email) && Objects.equals(password, institution.password) && Objects.equals(categorie, institution.categorie);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idInsitution, Libelle, email, password, categorie);
+        return Objects.hash(idInstitution, Libelle, email, password, categorie);
     }
 
     @Override
     public String toString() {
         return "{" +
-            " idInsitution='" + getIdInsitution() + "'" +
+            " idInstitution='" + getidInstitution() + "'" +
             ", Libelle='" + getLibelle() + "'" +
             ", email='" + getEmail() + "'" +
             ", password='" + getPassword() + "'" +

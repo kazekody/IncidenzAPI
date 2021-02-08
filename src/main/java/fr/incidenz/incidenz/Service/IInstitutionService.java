@@ -6,12 +6,14 @@ import fr.incidenz.incidenz.Model.Institution;
 
 public interface IInstitutionService {
 
-    public void addInstitution (Institution institution);
+    public Institution addInstitution (Institution institution);
 
     public List<Institution> getInstitution();
     
-    public void modifyInstitution();
+    public Institution modifyInstitution(Institution institution);
 
-    public Institution getInstitutionbyId();
+    public Institution getInstitutionbyId(String IdInstitution);
+
+    public Boolean deleteInstitution(String IdInstitution);
     
 }

@@ -12,16 +12,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Image_table")
 public class ImageModel {
-    
-    public ImageModel() {
-                super();
-            }
-
-           public ImageModel(String nomImage, String type, byte[] picByte) {
-                this.nomImage = nomImage;
-                this.type = type;
-                this.picByte = picByte;
-            }
 
             @Id
             @Column(name = "id_Image", nullable= false , unique = true, updatable = false)
@@ -123,6 +113,16 @@ public class ImageModel {
             ", type='" + getType() + "'" +
             ", picByte='" + getPicByte() + "'" +
             "}";
+    }
+
+    public ImageModel() {
+        super();
+    }
+
+   public ImageModel(String nomImage, String type, byte[] picByte) {
+        this.nomImage = nomImage;
+        this.type = type;
+        this.picByte = picByte;
     }
             
 }
