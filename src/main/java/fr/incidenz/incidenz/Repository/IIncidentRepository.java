@@ -29,6 +29,7 @@ public interface IIncidentRepository extends JpaRepository<Incident , String> {
 
 	List<Incident> findByCategorieAndDateIncident(String categorie, LocalDate dateIncident);
 
+
     @Modifying
 	@Transactional
 	@Query(value = "delete from Incident incident where incident.idIncident=:idIncident")

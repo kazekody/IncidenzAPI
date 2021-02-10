@@ -92,5 +92,12 @@ public class GestionIntervention {
            response.setReturnValue(interventionService.listInterventionDate(date));
            return response;
        }
+
+       @GetMapping("/listInterventionByCategorie/{categorie}")
+       public Response listInterventionByCategorie(@PathVariable("categorie") String categorie){
+           Response response = new Response();
+           response.setReturnValue(interventionService.listInterventionByCategorie(categorie));
+           return response;
+       }
     
 }

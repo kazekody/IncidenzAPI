@@ -25,11 +25,13 @@ public class IncidentImpl implements IIncidentService {
     public IUserRepository userRepository;
 
     @Override
-    public Incident addIncident(String titre, String categorie, String description, String idUser) {
+    public Incident addIncident(String titre, String categorie, String description, String idUser, Float latitude, Float longitude) {
         Incident incident = new Incident();
         incident.setCategorie(categorie);
         incident.setTitre(titre);
         incident.setDescription(description);
+        incident.setLatitude(latitude);
+        incident.setLongitude(longitude);
         User user = userRepository.findByIdUser(idUser);
         incident.setUser(user);
         String id = "IN" + incident.getCategorie().toString().substring(0, 2).toUpperCase();

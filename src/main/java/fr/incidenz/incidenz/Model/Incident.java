@@ -51,6 +51,12 @@ public class Incident implements Serializable {
     @Column(name="Status", nullable = false)
     private String status;
 
+    @Column(name="Latitude", nullable = false)
+    private Float latitude;
+
+    @Column(name="Longitude", nullable = false)
+    private Float longitude;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_Incident")
     private List<ImageModel> listImageModeList = new ArrayList<>();
@@ -65,7 +71,8 @@ public class Incident implements Serializable {
     public Incident() {
     }
 
-    public Incident(String idIncident, String titre, String Description, String categorie, LocalDate dateIncident, LocalTime heureIncident, String status) {
+    public Incident(String idIncident, String titre, String Description, String categorie, LocalDate dateIncident, LocalTime heureIncident, 
+    String status, Float latitude, Float longitude) {
         this.idIncident = idIncident;
         this.titre = titre;
         this.Description = Description;
@@ -73,7 +80,10 @@ public class Incident implements Serializable {
         this.dateIncident = dateIncident;
         this.heureIncident = heureIncident;
         this.status = status;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
+
 
     @Override
     public String toString() {
@@ -85,8 +95,11 @@ public class Incident implements Serializable {
             ", dateIncident='" + getDateIncident() + "'" +
             ", heureIncident='" + getHeureIncident() + "'" +
             ", status='" + getStatus() + "'" +
+            ", latitude='" + getLatitude() + "'" +
+            ", longitude='" + getLongitude() + "'" +
             "}";
     }
+  
     
 
     public String getIdIncident() {
@@ -145,6 +158,22 @@ public class Incident implements Serializable {
         this.status = status;
     }
 
+    public Float getLatitude() {
+        return this.latitude;
+    }
+
+    public void setLatitude(Float latitude) {
+        this.latitude = latitude;
+    }
+
+    public Float getLongitude() {
+        return this.longitude;
+    }
+
+    public void setLongitude(Float longitude) {
+        this.longitude = longitude;
+    }
+
     public List<ImageModel> getListImageModeList() {
         return this.listImageModeList;
     }
@@ -163,6 +192,7 @@ public class Incident implements Serializable {
 
 
 
+
     @Override
     public boolean equals(Object o) {
         if (o == this)
@@ -171,14 +201,14 @@ public class Incident implements Serializable {
             return false;
         }
         Incident incident = (Incident) o;
-        return Objects.equals(idIncident, incident.idIncident) && Objects.equals(titre, incident.titre) && Objects.equals(Description, incident.Description) && Objects.equals(categorie, incident.categorie) && Objects.equals(dateIncident, incident.dateIncident) && Objects.equals(heureIncident, incident.heureIncident) && Objects.equals(status, incident.status) && Objects.equals(listImageModeList, incident.listImageModeList) && Objects.equals(user, incident.user);
+        return Objects.equals(idIncident, incident.idIncident) && Objects.equals(titre, incident.titre) && Objects.equals(Description, incident.Description) && Objects.equals(categorie, incident.categorie) && Objects.equals(dateIncident, incident.dateIncident) && Objects.equals(heureIncident, incident.heureIncident) && Objects.equals(status, incident.status) && Objects.equals(latitude, incident.latitude) && Objects.equals(longitude, incident.longitude) && Objects.equals(listImageModeList, incident.listImageModeList) && Objects.equals(user, incident.user);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(idIncident, titre, Description, categorie, dateIncident, heureIncident, status, listImageModeList, user);
+        return Objects.hash(idIncident, titre, Description, categorie, dateIncident, heureIncident, status, latitude, longitude, listImageModeList, user);
     }
-
+   
 
 
 

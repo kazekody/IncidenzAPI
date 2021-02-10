@@ -74,9 +74,9 @@ public class InterventionImpl implements IInterventionService {
     }
 
     @Override
-    public List<Intervention> listInterventionDateAndCategorie(String date, String categorie) {
-        
-        return null;
+    public List<Intervention> listInterventionByCategorie(String categorie) {
+        List<Intervention> listIntervention = interventionRepository.findByCategorieIncident(categorie);
+        return listIntervention;
     }
 
     

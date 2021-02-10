@@ -19,7 +19,7 @@ public interface IInterventionService {
 
     public List<Intervention> listInterventionDate(String date);
 
-    public List<Intervention> listInterventionDateAndCategorie(String date,String categorie);
+    public List<Intervention> listInterventionByCategorie(String categorie);
 
 
 

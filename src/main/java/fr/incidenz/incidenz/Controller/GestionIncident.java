@@ -26,11 +26,12 @@ public class GestionIncident {
     @Autowired
     public IUserService userService;
 
-    @PostMapping("/createIncident/{idUser}/{titre}/{categorie}/{description}")
+    @PostMapping("/createIncident/{idUser}/{titre}/{categorie}/{description}/{latitude}/{longitude}")
     public Response createIncident(@PathVariable("idUser") String idUser, @PathVariable("titre") String titre,
-            @PathVariable("categorie") String categorie, @PathVariable("description") String description) {
+            @PathVariable("categorie") String categorie, @PathVariable("description") String description,
+            @PathVariable("latitude") Float latitude, @PathVariable("longitude") Float longitude) {
         Response response = new Response();
-        response.setReturnValue(incidentService.addIncident(titre, categorie, description, idUser));
+        response.setReturnValue(incidentService.addIncident(titre, categorie, description, idUser, latitude,longitude));
         return response;
     }
 
@@ -107,7 +108,6 @@ public class GestionIncident {
        @PathVariable("date") String date) {
            Response response = new Response();
            response.setReturnValue(incidentService.getIncidentByCategorieAndDate(categorie,date));
-   
            return response;
        }
 

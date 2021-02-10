@@ -10,7 +10,12 @@ import java.util.Date;
 //import java.util.Date;
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 @Repository
 public interface IInterventionRepository extends JpaRepository <Intervention, Long> {
@@ -23,7 +28,10 @@ public interface IInterventionRepository extends JpaRepository <Intervention, Lo
 
     List<Intervention> findByDateIntervention(Date date);
 
-    //List<Intervention> findByDateInterventionAndCategorie(Date date,String categorie);
+    @Modifying
+	@Transactional
+	@Query(value = "SELECT * from intervention_table AS intervention ,incident_table as incident WHERE intervention.id_incident = incident.id_incident AND incident.categorie=?1" , nativeQuery = true)
+	List<Intervention> findByCategorieIncident(@Param("categorie")String categorie);
 
     
 
