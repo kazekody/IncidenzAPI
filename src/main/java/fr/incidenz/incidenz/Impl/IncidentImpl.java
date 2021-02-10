@@ -25,7 +25,7 @@ public class IncidentImpl implements IIncidentService {
     public IUserRepository userRepository;
 
     @Override
-    public Incident addIncident(String titre, String categorie, String description, String idUser, Float latitude, Float longitude) {
+    public Incident addIncident(String titre, String categorie, String description, String idUser, Double latitude, Double longitude) {
         Incident incident = new Incident();
         incident.setCategorie(categorie);
         incident.setTitre(titre);

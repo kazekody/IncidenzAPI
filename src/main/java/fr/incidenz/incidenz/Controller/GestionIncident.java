@@ -29,7 +29,7 @@ public class GestionIncident {
     @PostMapping("/createIncident/{idUser}/{titre}/{categorie}/{description}/{latitude}/{longitude}")
     public Response createIncident(@PathVariable("idUser") String idUser, @PathVariable("titre") String titre,
             @PathVariable("categorie") String categorie, @PathVariable("description") String description,
-            @PathVariable("latitude") Float latitude, @PathVariable("longitude") Float longitude) {
+            @PathVariable("latitude") Double latitude, @PathVariable("longitude") Double longitude) {
         Response response = new Response();
         response.setReturnValue(incidentService.addIncident(titre, categorie, description, idUser, latitude,longitude));
         return response;

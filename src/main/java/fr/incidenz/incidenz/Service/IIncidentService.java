@@ -5,7 +5,7 @@ import fr.incidenz.incidenz.Model.Incident;
 
 public interface IIncidentService {
 
-    public Incident addIncident (String titre, String categorie, String description, String idUser, Float latitude, Float longitude);
+    public Incident addIncident (String titre, String categorie, String description, String idUser, Double latitude, Double longitude);
 
     public List<Incident> listAllIncident();
     
