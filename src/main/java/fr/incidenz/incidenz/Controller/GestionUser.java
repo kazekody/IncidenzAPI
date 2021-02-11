@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import fr.incidenz.incidenz.Model.User;
+import fr.incidenz.incidenz.Repository.IUserRepository;
 import fr.incidenz.incidenz.Service.IUserService;
 import fr.incidenz.incidenz.Tools.Response;
 
@@ -21,11 +22,19 @@ public class GestionUser {
 
     @Autowired
     public IUserService userService;
+
+    @Autowired
+    public IUserRepository userRepository;
     
     @PostMapping("/createUser")
     public Response createUser(@RequestBody User user){
         Response response = new Response();
-        response.setReturnValue(userService.addUser(user));
+        User user1 = userRepository.findByEmail(user.getEmail());
+        if(user1 != null){
+            response.setReturnValue(null);
+        }else if(user1 == null) {
+            response.setReturnValue(userService.addUser(user));
+        }
         return response;
        }
 

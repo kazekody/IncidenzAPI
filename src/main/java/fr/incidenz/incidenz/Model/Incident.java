@@ -52,10 +52,10 @@ public class Incident implements Serializable {
     private String status;
 
     @Column(name="Latitude", nullable = false)
-    private Float latitude;
+    private Double latitude;
 
     @Column(name="Longitude", nullable = false)
-    private Float longitude;
+    private Double longitude;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "id_Incident")
@@ -72,7 +72,7 @@ public class Incident implements Serializable {
     }
 
     public Incident(String idIncident, String titre, String Description, String categorie, LocalDate dateIncident, LocalTime heureIncident, 
-    String status, Float latitude, Float longitude) {
+    String status, Double latitude, Double longitude) {
         this.idIncident = idIncident;
         this.titre = titre;
         this.Description = Description;
@@ -158,19 +158,19 @@ public class Incident implements Serializable {
         this.status = status;
     }
 
-    public Float getLatitude() {
+    public Double getLatitude() {
         return this.latitude;
     }
 
-    public void setLatitude(Float latitude) {
+    public void setLatitude(Double latitude) {
         this.latitude = latitude;
     }
 
-    public Float getLongitude() {
+    public Double getLongitude() {
         return this.longitude;
     }
 
-    public void setLongitude(Float longitude) {
+    public void setLongitude(Double longitude) {
         this.longitude = longitude;
     }
 
